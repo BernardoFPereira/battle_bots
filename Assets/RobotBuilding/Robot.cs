@@ -50,23 +50,23 @@ public class Robot : MonoBehaviour
         int rnd_idx = Random.Range(0, name_list.Length - 1);
         name = name_list[rnd_idx];
 
-        photon_view.RPC("BroadcastGeneratedName_RPC", RpcTarget.All, name);
+        // photon_view.RPC("BroadcastGeneratedName_RPC", RpcTarget.All, name);
 
-        // object current_name;
-        // if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue("robot_name", out current_name))
-        // {
-        //     Hashtable updated_robot = new Hashtable();
-        //     updated_robot.Add("robot_name", name);
+        object current_name;
+        if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue("robot_name", out current_name))
+        {
+            Hashtable updated_robot = new Hashtable();
+            updated_robot.Add("robot_name", name);
 
-        //     PhotonNetwork.LocalPlayer.SetCustomProperties(updated_robot);
-        // }
+            PhotonNetwork.LocalPlayer.SetCustomProperties(updated_robot);
+        }
     }
 
-    [PunRPC]
-    public void BroadcastGeneratedName_RPC(string bot_name)
-    {
-        this.name = bot_name;
-    }
+    // [PunRPC]
+    // public void BroadcastGeneratedName_RPC(string bot_name)
+    // {
+    //     this.name = bot_name;
+    // }
 
     // public void InitializeClientRobot()
     // {

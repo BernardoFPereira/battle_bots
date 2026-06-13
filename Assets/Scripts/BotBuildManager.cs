@@ -163,6 +163,22 @@ public class BotBuildManager : MonoBehaviourPunCallbacks
         }
     }
 
+    // public void UpdateRobotName(Robot robot)
+    // {
+    //     string name_plate_fmt = "• ROBOT\n";
+
+    //     if (PhotonNetwork.IsMasterClient)
+    //     {
+    //         string bot_name = name_plate_fmt + robot.name;
+    //         host_robot_name_plate_text.text = bot_name;
+    //     }
+    //     else
+    //     {
+    //         string bot_name = name_plate_fmt + robot.name;
+    //         client_robot_name_plate_text.text = bot_name;
+    //     }
+    // }
+
     public bool CheckRobotBuildComplete(Robot robot)
     {
         return (
@@ -326,17 +342,16 @@ public class BotBuildManager : MonoBehaviourPunCallbacks
         string locomotion = robot.equipped_parts["locomotion"] ? list_tick + "LOC: " + robot.equipped_parts["locomotion"].name : list_tick + "LOC: <color=red>NONE</color>";
 
         string bot_name = name_plate_fmt + robot.name;
-        Debug.LogWarning(robot.name);
         string bot_parts = frame + head + r_arm + l_arm + locomotion;
 
         if (PhotonNetwork.IsMasterClient)
         {
-            photon_view.RPC("UpdateHostPartList_RPC", RpcTarget.AllBuffered, bot_name, bot_parts);
+            photon_view.RPC("UpdateHostPartList_RPC", RpcTarget.AllBuffered, bot_parts, bot_name);
             Debug.LogWarning(player1_bot.name);
         }
         else
         {
-            photon_view.RPC("UpdateClientPartList_RPC", RpcTarget.AllBuffered, bot_name, bot_parts);
+            photon_view.RPC("UpdateClientPartList_RPC", RpcTarget.AllBuffered, bot_parts, bot_name);
             Debug.LogWarning(player2_bot.name);
         }
 
@@ -344,17 +359,17 @@ public class BotBuildManager : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    public void UpdateHostPartList_RPC(string bot_name, string bot_parts)
+    public void UpdateHostPartList_RPC(string bot_parts, string bot_name)
     {
-        player1_bot.name = bot_name;
+        // player1_bot.name = bot_name;
         host_robot_name_plate_text.text = bot_name;
         host_player_parts.text = bot_parts;
     }
 
     [PunRPC]
-    public void UpdateClientPartList_RPC(string bot_name, string bot_parts)
+    public void UpdateClientPartList_RPC(string bot_parts, string bot_name)
     {
-        player1_bot.name = bot_name;
+        // player2_bot.name = bot_name;
         client_robot_name_plate_text.text = bot_name;
         client_player_parts.text = bot_parts;
     }
