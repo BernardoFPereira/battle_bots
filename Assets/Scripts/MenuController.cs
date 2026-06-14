@@ -36,12 +36,12 @@ public class NewBehaviourScript : MonoBehaviourPunCallbacks
 
     Screen current_screen;
 
-    void Start()
+    public void Start()
     {
         ShowScreen(Screen.ENGAGEMENT);
     }
 
-    void Update()
+    public void Update()
     {
         HandleEngagementInput();
     }
@@ -164,24 +164,10 @@ public class NewBehaviourScript : MonoBehaviourPunCallbacks
         {
             host_username_display.text = "<color=#6495ED>" + PhotonNetwork.MasterClient.NickName + "</color>";
             client_username_display.text = "<color=yellow>" + PhotonNetwork.NickName + "</color>";
-            // Debug.Log("Client Player entered room");
-            // Get battlefield data
-            // object current_battlefield;
-            // if (PhotonNetwork.CurrentRoom.CustomProperties.TryGetValue("battlefield_name", out current_battlefield))
-            // {
-            //     foreach (Battlefield battlefield in battlefield_manager.battlefield_list)
-            //     {
-            //         if ((string)current_battlefield == battlefield.map_name)
-            //         {
-            //             battlefield_manager.selected_arena = battlefield;
-            //             battlefield_manager.UpdateAreaScan(battlefield);
-            //         }
-            //     }
-            // }
         }
     }
 
-    IEnumerator ReturnPing(float time)
+    public IEnumerator ReturnPing(float time)
     {
         Debug.LogWarning("Server region: " + PhotonNetwork.CloudRegion);
         Debug.LogWarning("Ping: " + PhotonNetwork.GetPing());

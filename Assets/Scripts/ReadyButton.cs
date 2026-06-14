@@ -47,7 +47,7 @@ public class ReadyButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             robot_build_manager.player1_bot.is_ready = !robot_build_manager.player1_bot.is_ready;
             // button_text.text = robot_build_manager.player1_bot.is_ready ? "*** READY ***" : "READY";
 
-            photon_view.RPC("UpdateReadyStatus_RPC", RpcTarget.All, robot_build_manager.player1_bot.is_ready);
+            photon_view.RPC("UpdateReadyStatus_RPC", RpcTarget.AllBuffered, robot_build_manager.player1_bot.is_ready);
         }
         if (!PhotonNetwork.IsMasterClient && is_client_button)
         {
