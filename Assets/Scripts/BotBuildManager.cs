@@ -42,7 +42,7 @@ public class BotBuildManager : MonoBehaviourPunCallbacks
     [SerializeField]
     RobotPart[] part_registry;
 
-    void Start()
+    public void Start()
     {
         photon_view = GetComponent<PhotonView>();
 

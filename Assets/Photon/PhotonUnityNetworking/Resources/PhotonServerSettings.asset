@@ -48,6 +48,7 @@ MonoBehaviour:
   - UpdateClientStatBlock_RPC
   - UpdateHostStatBlock_RPC
   - BroadcastGeneratedName_RPC
+  - UpdateReadyStatus_RPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
