@@ -19,6 +19,9 @@ public class ReadyButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     BotBuildManager robot_build_manager;
 
     [SerializeField]
+    CombatManager combat_manager;
+
+    [SerializeField]
     bool is_master_button, is_client_button;
 
     Image button_highlight;
@@ -75,6 +78,11 @@ public class ReadyButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         if (is_client_button)
         {
             robot_build_manager.player2_bot.is_ready = is_ready;
+        }
+
+        if ((robot_build_manager.player1_bot.is_ready && robot_build_manager.player2_bot.is_ready) && (!combat_manager.combat_running))
+        {
+            combat_manager.StartCombatLoop();
         }
         // button_text.text = "*** READY ***";
     }

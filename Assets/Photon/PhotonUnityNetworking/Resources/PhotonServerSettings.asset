@@ -49,6 +49,7 @@ MonoBehaviour:
   - UpdateHostStatBlock_RPC
   - BroadcastGeneratedName_RPC
   - UpdateReadyStatus_RPC
+  - ExecuteCombatRound_RPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
