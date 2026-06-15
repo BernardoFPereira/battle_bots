@@ -34,6 +34,9 @@ public class NewBehaviourScript : MonoBehaviourPunCallbacks
     [SerializeField]
     TMP_Text client_username_display;
 
+    [SerializeField]
+    GameObject connect_fail_popup;
+
     Screen current_screen;
 
     public void Start()
@@ -100,8 +103,7 @@ public class NewBehaviourScript : MonoBehaviourPunCallbacks
             bot_build_manager.UpdatePartsInfo(bot_build_manager.player1_bot);
             bot_build_manager.UpdatePartsInfo(bot_build_manager.player2_bot);
 
-            object current_name;
-            if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue("robot_name", out current_name))
+            if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue("robot_name", out object current_name))
             {
                 Hashtable updated_robot = new Hashtable();
                 updated_robot.Add("robot_name", (string)current_name);
@@ -126,8 +128,7 @@ public class NewBehaviourScript : MonoBehaviourPunCallbacks
                 PhotonNetwork.LocalPlayer.SetCustomProperties(updated_robot);
             }
 
-            object current_battlefield;
-            if (PhotonNetwork.CurrentRoom.CustomProperties.TryGetValue("battlefield_name", out current_battlefield))
+            if (PhotonNetwork.CurrentRoom.CustomProperties.TryGetValue("battlefield_name", out object current_battlefield))
             {
                 foreach (Battlefield battlefield in battlefield_manager.battlefield_list)
                 {
@@ -149,6 +150,7 @@ public class NewBehaviourScript : MonoBehaviourPunCallbacks
     {
         Debug.Log("No room available!");
         // TODO: Avisar usuario com feedback na tela (janela de erro talvez)
+        connect_fail_popup.SetActive(true);
     }
 
     public override void OnPlayerEnteredRoom(Player player)
@@ -167,14 +169,14 @@ public class NewBehaviourScript : MonoBehaviourPunCallbacks
         }
     }
 
-    public IEnumerator ReturnPing(float time)
-    {
-        Debug.LogWarning("Server region: " + PhotonNetwork.CloudRegion);
-        Debug.LogWarning("Ping: " + PhotonNetwork.GetPing());
-        Debug.LogWarning("---------------------");
-        yield return new WaitForSeconds(time);
-        StartCoroutine("ReturnPing", 1f);
-    }
+    // public IEnumerator ReturnPing(float time)
+    // {
+    //     Debug.LogWarning("Server region: " + PhotonNetwork.CloudRegion);
+    //     Debug.LogWarning("Ping: " + PhotonNetwork.GetPing());
+    //     Debug.LogWarning("---------------------");
+    //     yield return new WaitForSeconds(time);
+    //     StartCoroutine("ReturnPing", 1f);
+    // }
 
     void ShowScreen(Screen screen)
     {
@@ -240,6 +242,7 @@ public class NewBehaviourScript : MonoBehaviourPunCallbacks
 
         temp_properties.Add("username", PhotonNetwork.NickName);
         temp_properties.Add("ID", PhotonNetwork.LocalPlayer.UserId);
+        // temp_properties.Add("robot_name", "NOT JOINED");
         temp_properties.Add("robot_frame", "empty");
         temp_properties.Add("robot_head", "empty");
         temp_properties.Add("robot_r_arm", "empty");

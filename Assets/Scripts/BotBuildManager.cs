@@ -42,9 +42,13 @@ public class BotBuildManager : MonoBehaviourPunCallbacks
     [SerializeField]
     RobotPart[] part_registry;
 
-    public void Start()
+    private void Awake()
     {
         photon_view = GetComponent<PhotonView>();
+    }
+
+    public void Start()
+    {
 
         ClearButtonTicks();
         // UpdatePartsInfo(player1_bot);
@@ -291,14 +295,23 @@ public class BotBuildManager : MonoBehaviourPunCallbacks
 
         string updated_stat_block = range_text + integrity_text + armor_text + speed_text;
 
-        if (PhotonNetwork.IsMasterClient)
+        if (robot == player1_bot)
         {
-            photon_view.RPC("UpdateHostStatBlock_RPC", RpcTarget.AllBuffered, updated_stat_block);
+            host_player_stats.text = updated_stat_block;
         }
-        else
+        else if (robot == player2_bot)
         {
-            photon_view.RPC("UpdateClientStatBlock_RPC", RpcTarget.AllBuffered, updated_stat_block);
+            client_player_stats.text = updated_stat_block;
         }
+
+        // if (PhotonNetwork.IsMasterClient)
+        // {
+        //     photon_view.RPC("UpdateHostStatBlock_RPC", RpcTarget.AllBuffered, updated_stat_block);
+        // }
+        // else
+        // {
+        //     photon_view.RPC("UpdateClientStatBlock_RPC", RpcTarget.AllBuffered, updated_stat_block);
+        // }
     }
 
     [PunRPC]
@@ -344,16 +357,27 @@ public class BotBuildManager : MonoBehaviourPunCallbacks
         string bot_name = name_plate_fmt + robot.name;
         string bot_parts = frame + head + r_arm + l_arm + locomotion;
 
-        if (PhotonNetwork.IsMasterClient)
+        if (robot == player1_bot)
         {
-            photon_view.RPC("UpdateHostPartList_RPC", RpcTarget.AllBuffered, bot_parts, bot_name);
-            Debug.LogWarning(player1_bot.name);
+            host_robot_name_plate_text.text = bot_name;
+            host_player_parts.text = bot_parts;
         }
-        else
+        else if (robot == player2_bot)
         {
-            photon_view.RPC("UpdateClientPartList_RPC", RpcTarget.AllBuffered, bot_parts, bot_name);
-            Debug.LogWarning(player2_bot.name);
+            client_robot_name_plate_text.text = bot_name;
+            client_player_parts.text = bot_parts;
         }
+
+        // if (PhotonNetwork.IsMasterClient)
+        // {
+        //     photon_view.RPC("UpdateHostPartList_RPC", RpcTarget.AllBuffered, bot_parts, bot_name);
+        //     Debug.LogWarning(player1_bot.name);
+        // }
+        // else
+        // {
+        //     photon_view.RPC("UpdateClientPartList_RPC", RpcTarget.AllBuffered, bot_parts, bot_name);
+        //     Debug.LogWarning(player2_bot.name);
+        // }
 
         UpdateRobotStatsDisplay(robot);
     }
@@ -563,6 +587,8 @@ public class BotBuildManager : MonoBehaviourPunCallbacks
             {
                 player1_bot.is_built = (bool)target_player.CustomProperties["is_built"];
             }
+
+            UpdatePartsInfo(player1_bot);
         }
         else
         {
@@ -646,6 +672,8 @@ public class BotBuildManager : MonoBehaviourPunCallbacks
             {
                 player2_bot.is_built = (bool)target_player.CustomProperties["is_built"];
             }
+
+            UpdatePartsInfo(player2_bot);
         }
     }
 }
