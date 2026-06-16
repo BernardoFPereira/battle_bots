@@ -18,7 +18,13 @@ public class CombatManager : MonoBehaviour
     public bool combat_running = false;
     bool combat_over = false;
 
-    private void Start()
+    int player1_bot_integrity;
+    int player2_bot_integrity;
+
+    int player1_current_integrity;
+    int player2_current_integrity;
+
+    private void Awake()
     {
         photon_view = GetComponent<PhotonView>();
     }
@@ -32,7 +38,15 @@ public class CombatManager : MonoBehaviour
         combat_running = true;
         combat_over = false;
 
+        player1_bot_integrity = CalculateTotalIntegrity(player1_bot);
+        player2_bot_integrity = CalculateTotalIntegrity(player2_bot);
+
         StartCoroutine(CombatLoopRoutine());
+    }
+
+    private int CalculateTotalIntegrity(Robot robot)
+    {
+        return (robot.frame.integrity + robot.head.integrity + robot.right_arm.integrity + robot.left_arm.integrity + robot.locomotion.integrity);
     }
 
     private IEnumerator CombatLoopRoutine()
@@ -54,13 +68,13 @@ public class CombatManager : MonoBehaviour
     {
         if (init_1 >= init_2)
         {
-            combat_log.text += $"\nPlayer 1 attacks!";
-            combat_log.text += "<color=#6495ED>" + player1_bot.name + "</color>";
+            // combat_log.text += $"\nPlayer 1 attacks!";
+            combat_log.text += "\n<color=#6495ED>" + player1_bot.name + "</color> attacks!";
         }
         else
         {
-            combat_log.text += $"\nPlayer 2 attacks!";
-            combat_log.text += "<color=yellow>" + player2_bot.name + "</color>";
+            combat_log.text += "\n<color=yellow>" + player2_bot.name + "</color> attacks!";
+            // combat_log.text += $"\nPlayer 2 attacks!";
         }
     }
 

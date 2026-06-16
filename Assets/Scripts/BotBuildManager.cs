@@ -494,8 +494,7 @@ public class BotBuildManager : MonoBehaviourPunCallbacks
 
     void UpdateRobotName(Robot robot)
     {
-        object current_name;
-        if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue("robot_name", out current_name))
+        if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue("robot_name", out object current_name))
         {
             Hashtable updated_robot = new Hashtable();
             updated_robot.Add("robot_name", robot.name);
@@ -520,10 +519,12 @@ public class BotBuildManager : MonoBehaviourPunCallbacks
                     if (part.name == (string)target_player.CustomProperties["robot_frame"])
                     {
                         player1_bot.frame = part as RobotFrame;
+                        player1_bot.equipped_parts["frame"] = part;
                     }
                     if ((string)target_player.CustomProperties["robot_frame"] == "empty")
                     {
                         player1_bot.frame = null;
+                        player1_bot.equipped_parts["frame"] = null;
                     }
                 }
             }
@@ -534,10 +535,12 @@ public class BotBuildManager : MonoBehaviourPunCallbacks
                     if (part.name == (string)target_player.CustomProperties["robot_head"])
                     {
                         player1_bot.head = part as RobotPartHead;
+                        player1_bot.equipped_parts["head"] = part;
                     }
                     if ((string)target_player.CustomProperties["robot_head"] == "empty")
                     {
                         player1_bot.head = null;
+                        player1_bot.equipped_parts["head"] = null;
                     }
                 }
             }
@@ -548,10 +551,12 @@ public class BotBuildManager : MonoBehaviourPunCallbacks
                     if (part.name == (string)target_player.CustomProperties["robot_r_arm"])
                     {
                         player1_bot.right_arm = part as RobotPartArm;
+                        player1_bot.equipped_parts["r_arm"] = part;
                     }
                     if ((string)target_player.CustomProperties["robot_r_arm"] == "empty")
                     {
                         player1_bot.right_arm = null;
+                        player1_bot.equipped_parts["r_arm"] = null;
                     }
                 }
             }
@@ -562,10 +567,12 @@ public class BotBuildManager : MonoBehaviourPunCallbacks
                     if (part.name == (string)target_player.CustomProperties["robot_l_arm"])
                     {
                         player1_bot.left_arm = part as RobotPartArm;
+                        player1_bot.equipped_parts["l_arm"] = part;
                     }
                     if ((string)target_player.CustomProperties["robot_l_arm"] == "empty")
                     {
                         player1_bot.left_arm = null;
+                        player1_bot.equipped_parts["l_arm"] = null;
                     }
                 }
             }
@@ -576,10 +583,12 @@ public class BotBuildManager : MonoBehaviourPunCallbacks
                     if (part.name == (string)target_player.CustomProperties["robot_locomotion"])
                     {
                         player1_bot.locomotion = part as RobotPartLocomotion;
+                        player1_bot.equipped_parts["locomotion"] = part;
                     }
                     if ((string)target_player.CustomProperties["robot_locomotion"] == "empty")
                     {
                         player1_bot.locomotion = null;
+                        player1_bot.equipped_parts["locomotion"] = null;
                     }
                 }
             }
@@ -605,10 +614,12 @@ public class BotBuildManager : MonoBehaviourPunCallbacks
                     if (part.name == (string)target_player.CustomProperties["robot_frame"])
                     {
                         player2_bot.frame = part as RobotFrame;
+                        player2_bot.equipped_parts["frame"] = part;
                     }
                     if ((string)target_player.CustomProperties["robot_frame"] == "empty")
                     {
                         player2_bot.frame = null;
+                        player2_bot.equipped_parts["frame"] = null;
                     }
                 }
             }
@@ -619,10 +630,12 @@ public class BotBuildManager : MonoBehaviourPunCallbacks
                     if (part.name == (string)target_player.CustomProperties["robot_head"])
                     {
                         player2_bot.head = part as RobotPartHead;
+                        player2_bot.equipped_parts["head"] = part;
                     }
                     if ((string)target_player.CustomProperties["robot_head"] == "empty")
                     {
                         player2_bot.head = null;
+                        player2_bot.equipped_parts["head"] = null;
                     }
                 }
             }
@@ -633,10 +646,12 @@ public class BotBuildManager : MonoBehaviourPunCallbacks
                     if (part.name == (string)target_player.CustomProperties["robot_r_arm"])
                     {
                         player2_bot.right_arm = part as RobotPartArm;
+                        player2_bot.equipped_parts["r_arm"] = part;
                     }
                     if ((string)target_player.CustomProperties["robot_r_arm"] == "empty")
                     {
                         player2_bot.right_arm = null;
+                        player2_bot.equipped_parts["r_arm"] = null;
                     }
                 }
             }
@@ -647,10 +662,12 @@ public class BotBuildManager : MonoBehaviourPunCallbacks
                     if (part.name == (string)target_player.CustomProperties["robot_l_arm"])
                     {
                         player2_bot.left_arm = part as RobotPartArm;
+                        player2_bot.equipped_parts["l_arm"] = part;
                     }
                     if ((string)target_player.CustomProperties["robot_l_arm"] == "empty")
                     {
                         player2_bot.left_arm = null;
+                        player2_bot.equipped_parts["l_arm"] = null;
                     }
                 }
             }
@@ -661,10 +678,12 @@ public class BotBuildManager : MonoBehaviourPunCallbacks
                     if (part.name == (string)target_player.CustomProperties["robot_locomotion"])
                     {
                         player2_bot.locomotion = part as RobotPartLocomotion;
+                        player2_bot.equipped_parts["locomotion"] = part;
                     }
                     if ((string)target_player.CustomProperties["robot_locomotion"] == "empty")
                     {
                         player2_bot.locomotion = null;
+                        player2_bot.equipped_parts["locomotion"] = null;
                     }
                 }
             }

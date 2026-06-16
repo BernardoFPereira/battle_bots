@@ -100,6 +100,7 @@ public class NewBehaviourScript : MonoBehaviourPunCallbacks
         {
             host_username_display.text = "<color=#6495ED>" + PhotonNetwork.NickName + "</color>";
             bot_build_manager.player1_bot.InitializeRobot();
+
             bot_build_manager.UpdatePartsInfo(bot_build_manager.player1_bot);
             bot_build_manager.UpdatePartsInfo(bot_build_manager.player2_bot);
 
@@ -116,17 +117,6 @@ public class NewBehaviourScript : MonoBehaviourPunCallbacks
             host_username_display.text = "<color=#6495ED>" + PhotonNetwork.MasterClient.NickName + "</color>";
             client_username_display.text = "<color=yellow>" + PhotonNetwork.NickName + "</color>";
             bot_build_manager.player2_bot.InitializeRobot();
-            bot_build_manager.UpdatePartsInfo(bot_build_manager.player1_bot);
-            bot_build_manager.UpdatePartsInfo(bot_build_manager.player2_bot);
-
-            object current_name;
-            if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue("robot_name", out current_name))
-            {
-                Hashtable updated_robot = new Hashtable();
-                updated_robot.Add("robot_name", (string)current_name);
-
-                PhotonNetwork.LocalPlayer.SetCustomProperties(updated_robot);
-            }
 
             if (PhotonNetwork.CurrentRoom.CustomProperties.TryGetValue("battlefield_name", out object current_battlefield))
             {
@@ -139,6 +129,21 @@ public class NewBehaviourScript : MonoBehaviourPunCallbacks
                     }
                 }
             }
+
+            Hashtable host_properties = PhotonNetwork.MasterClient.CustomProperties;
+            bot_build_manager.OnPlayerPropertiesUpdate(PhotonNetwork.MasterClient, host_properties);
+
+            bot_build_manager.UpdatePartsInfo(bot_build_manager.player1_bot);
+            bot_build_manager.UpdatePartsInfo(bot_build_manager.player2_bot);
+
+            if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue("robot_name", out object current_name))
+            {
+                Hashtable updated_robot = new Hashtable();
+                updated_robot.Add("robot_name", (string)current_name);
+
+                PhotonNetwork.LocalPlayer.SetCustomProperties(updated_robot);
+            }
+
         }
 
         SetPlayerProperties();

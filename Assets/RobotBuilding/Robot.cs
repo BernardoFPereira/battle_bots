@@ -21,10 +21,15 @@ public class Robot : MonoBehaviour
     public bool is_built = false;
     public bool is_ready = false;
 
+    // int total_integrity = 0;
+    // int current_integrity = 0;
+
     PhotonView photon_view;
 
     void Awake()
     {
+        photon_view = GetComponent<PhotonView>();
+
         equipped_parts = new Dictionary<string, RobotPart>();
         equipped_parts.Add("frame", null);
         equipped_parts.Add("head", null);
@@ -33,58 +38,24 @@ public class Robot : MonoBehaviour
         equipped_parts.Add("locomotion", null);
 
         name = "NOT JOINED";
-
-        // InitializeRobot();
-
-        // PrintData();
     }
 
-    private void Start()
-    {
-        photon_view = GetComponent<PhotonView>();
-    }
+    // private void Start()
+    // {
+    //     photon_view = GetComponent<PhotonView>();
+    // }
 
     public void InitializeRobot()
     {
-        // photon_view.RPC("InitializeRobot_RPC", RpcTarget.AllBuffered);
         int rnd_idx = Random.Range(0, name_list.Length - 1);
         name = name_list[rnd_idx];
 
         Hashtable updated_robot = new Hashtable();
         updated_robot.Add("robot_name", name);
         PhotonNetwork.LocalPlayer.SetCustomProperties(updated_robot);
-
-        // photon_view.RPC("BroadcastGeneratedName_RPC", RpcTarget.All, name);
-
-        // object current_name;
-        // if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue("robot_name", out current_name))
-        // {
-        //     Hashtable updated_robot = new Hashtable();
-        //     updated_robot.Add("robot_name", name);
-
-        //     PhotonNetwork.LocalPlayer.SetCustomProperties(updated_robot);
-        // }
     }
 
-    // [PunRPC]
-    // public void BroadcastGeneratedName_RPC(string bot_name)
-    // {
-    //     this.name = bot_name;
-    // }
-
-    // public void InitializeClientRobot()
-    // {
-    //     photon_view.RPC("InitializeRobot_RPC", RpcTarget.AllBuffered);
-    // }
-
-    // [PunRPC]
-    // public void InitializeRobot_RPC()
-    // {
-    //     int rnd_idx = Random.Range(0, name_list.Length - 1);
-    //     name = name_list[rnd_idx];
-    // }
-
-    void PrintData()
+    void PrintDebugData()
     {
         Debug.Log("--- Robot Info ---");
         Debug.Log("_designation: " + name);
