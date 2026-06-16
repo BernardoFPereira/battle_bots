@@ -50,6 +50,8 @@ MonoBehaviour:
   - BroadcastGeneratedName_RPC
   - UpdateReadyStatus_RPC
   - ExecuteCombatRound_RPC
+  - ConcludeCombat_RPC
+  - BroadcastCombatRound_RPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

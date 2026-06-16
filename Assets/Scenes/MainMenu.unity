@@ -2920,7 +2920,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u2022Arms A"
+  m_text: "\u2022Arms G"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d543d6a83db52ea4ab3ece3e2a5965bf, type: 2}
   m_sharedMaterial: {fileID: -8878788321389543716, guid: d543d6a83db52ea4ab3ece3e2a5965bf, type: 2}
@@ -5327,7 +5327,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u2022Arms A"
+  m_text: "\u2022Arms C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d543d6a83db52ea4ab3ece3e2a5965bf, type: 2}
   m_sharedMaterial: {fileID: -8878788321389543716, guid: d543d6a83db52ea4ab3ece3e2a5965bf, type: 2}
@@ -7516,7 +7516,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u2022Arms A"
+  m_text: "\u2022Arms E"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d543d6a83db52ea4ab3ece3e2a5965bf, type: 2}
   m_sharedMaterial: {fileID: -8878788321389543716, guid: d543d6a83db52ea4ab3ece3e2a5965bf, type: 2}
@@ -8316,7 +8316,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 28122682}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -11550,7 +11550,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u2022Arms A"
+  m_text: "\u2022Arms D"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d543d6a83db52ea4ab3ece3e2a5965bf, type: 2}
   m_sharedMaterial: {fileID: -8878788321389543716, guid: d543d6a83db52ea4ab3ece3e2a5965bf, type: 2}
@@ -14183,7 +14183,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u2022Head A"
+  m_text: "\u2022Head C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d543d6a83db52ea4ab3ece3e2a5965bf, type: 2}
   m_sharedMaterial: {fileID: -8878788321389543716, guid: d543d6a83db52ea4ab3ece3e2a5965bf, type: 2}
@@ -16031,7 +16031,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u2022Head A"
+  m_text: "\u2022Head D"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d543d6a83db52ea4ab3ece3e2a5965bf, type: 2}
   m_sharedMaterial: {fileID: -8878788321389543716, guid: d543d6a83db52ea4ab3ece3e2a5965bf, type: 2}
@@ -16165,7 +16165,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u2022Head A"
+  m_text: "\u2022Head B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d543d6a83db52ea4ab3ece3e2a5965bf, type: 2}
   m_sharedMaterial: {fileID: -8878788321389543716, guid: d543d6a83db52ea4ab3ece3e2a5965bf, type: 2}
@@ -20380,7 +20380,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u2022Arms A"
+  m_text: "\u2022Arms B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d543d6a83db52ea4ab3ece3e2a5965bf, type: 2}
   m_sharedMaterial: {fileID: -8878788321389543716, guid: d543d6a83db52ea4ab3ece3e2a5965bf, type: 2}
@@ -20589,7 +20589,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u2022Arms A"
+  m_text: "\u2022Arms F"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d543d6a83db52ea4ab3ece3e2a5965bf, type: 2}
   m_sharedMaterial: {fileID: -8878788321389543716, guid: d543d6a83db52ea4ab3ece3e2a5965bf, type: 2}
@@ -21438,7 +21438,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u2022Head A"
+  m_text: "\u2022Head E"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d543d6a83db52ea4ab3ece3e2a5965bf, type: 2}
   m_sharedMaterial: {fileID: -8878788321389543716, guid: d543d6a83db52ea4ab3ece3e2a5965bf, type: 2}
