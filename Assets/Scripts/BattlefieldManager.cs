@@ -30,12 +30,6 @@ public class BattlefieldManager : MonoBehaviourPunCallbacks
 
     public Battlefield selected_arena;
 
-    void Start()
-    {
-        // InitializeBattlefield();
-        // UpdateAreaScan();
-    }
-
     public void InitializeBattlefield()
     {
         int rnd_idx = Random.Range(0, battlefield_list.Length - 1);
@@ -74,23 +68,4 @@ public class BattlefieldManager : MonoBehaviourPunCallbacks
             }
         }
     }
-
-    // public override void OnPlayerEnteredRoom(Player player)
-    // {
-    // if (!PhotonNetwork.IsMasterClient)
-    // {
-    // object current_battlefield;
-    // if (PhotonNetwork.CurrentRoom.CustomProperties.TryGetValue("battlefield_name", out current_battlefield))
-    // {
-    //     Debug.Log((string)current_battlefield);
-    //     foreach (Battlefield battlefield in battlefield_list)
-    //     {
-    //         if ((string)current_battlefield == battlefield.map_name)
-    //         {
-    //             UpdateAreaScan(battlefield);
-    //         }
-    //     }
-    // }
-    // }
-    // }
 }

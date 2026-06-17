@@ -95,7 +95,7 @@ public class CombatManager : MonoBehaviour
         else if (player2_current_integrity <= 0)
         {
             combat_over = true;
-            return "<color=i" + host_color + ">" + player1_bot.name + "</color>";
+            return "<color=" + host_color + ">" + player1_bot.name + "</color>";
         }
         return "";
     }
@@ -111,7 +111,7 @@ public class CombatManager : MonoBehaviour
         switch (Random.Range(0, 2))
         {
             case 0:
-                if (attacker.right_arm.damage != 0)
+                if (attacker.right_arm.weapon_range != WeaponRange.NONE)
                 {
                     potential_dmg = attacker.right_arm.damage;
                     arm_used = attacker.right_arm.name;
@@ -123,7 +123,7 @@ public class CombatManager : MonoBehaviour
                 }
                 break;
             case 1:
-                if (attacker.left_arm.damage != 0)
+                if (attacker.left_arm.weapon_range != WeaponRange.NONE)
                 {
                     potential_dmg = attacker.left_arm.damage;
                     arm_used = attacker.left_arm.name;

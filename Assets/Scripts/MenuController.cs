@@ -14,13 +14,16 @@ public enum Screen
     ROOM,
 }
 
-public class NewBehaviourScript : MonoBehaviourPunCallbacks
+public class MenuController : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     BotBuildManager bot_build_manager;
 
     [SerializeField]
     BattlefieldManager battlefield_manager;
+
+    [SerializeField]
+    CombatManager combat_manager;
 
     [SerializeField]
     GameObject lobby, engagement, room;
@@ -51,7 +54,7 @@ public class NewBehaviourScript : MonoBehaviourPunCallbacks
 
     void HandleEngagementInput()
     {
-        if (current_screen == Screen.ENGAGEMENT && Input.anyKeyDown)
+        if (current_screen == Screen.ENGAGEMENT && Input.GetKeyDown(KeyCode.Return))
         {
             ConnectToPhoton();
         }
@@ -143,18 +146,15 @@ public class NewBehaviourScript : MonoBehaviourPunCallbacks
 
                 PhotonNetwork.LocalPlayer.SetCustomProperties(updated_robot);
             }
-
         }
 
         SetPlayerProperties();
         PhotonNetwork.AutomaticallySyncScene = true;
     }
 
-
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
         Debug.Log("No room available!");
-        // TODO: Avisar usuario com feedback na tela (janela de erro talvez)
         connect_fail_popup.SetActive(true);
     }
 
@@ -172,6 +172,37 @@ public class NewBehaviourScript : MonoBehaviourPunCallbacks
             host_username_display.text = "<color=#6495ED>" + PhotonNetwork.MasterClient.NickName + "</color>";
             client_username_display.text = "<color=yellow>" + PhotonNetwork.NickName + "</color>";
         }
+    }
+
+    public override void OnPlayerLeftRoom(Player other_player)
+    {
+        Debug.LogWarning("Oponente desconectado! Saindo da sala");
+
+        if (bot_build_manager != null)
+        {
+            CombatManager combat_manager = FindObjectOfType<CombatManager>();
+            if (combat_manager != null)
+            {
+                combat_manager.combat_running = false;
+                combat_manager.StopAllCoroutines();
+            }
+        }
+
+        PhotonNetwork.LeaveRoom();
+    }
+
+    public override void OnLeftRoom()
+    {
+        Debug.Log("Saindo da sala. Voltando para a cena de engajamento!");
+
+        ShowScreen(Screen.ENGAGEMENT);
+    }
+
+    public override void OnDisconnected(DisconnectCause cause)
+    {
+        Debug.LogWarning("Desconexão abrupta: " + cause.ToString());
+
+        ShowScreen(Screen.ENGAGEMENT);
     }
 
     // public IEnumerator ReturnPing(float time)
@@ -247,7 +278,6 @@ public class NewBehaviourScript : MonoBehaviourPunCallbacks
 
         temp_properties.Add("username", PhotonNetwork.NickName);
         temp_properties.Add("ID", PhotonNetwork.LocalPlayer.UserId);
-        // temp_properties.Add("robot_name", "NOT JOINED");
         temp_properties.Add("robot_frame", "empty");
         temp_properties.Add("robot_head", "empty");
         temp_properties.Add("robot_r_arm", "empty");
@@ -269,5 +299,38 @@ public class NewBehaviourScript : MonoBehaviourPunCallbacks
         temp_room_properties.Add("battlefield_terrain", "");
 
         PhotonNetwork.CurrentRoom.SetCustomProperties(temp_room_properties);
+    }
+
+    [PunRPC]
+    public void ExecuteRematchReset_RPC()
+    {
+        PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable
+        {
+            {"wants_rematch", false},
+            {"is_built", false},
+            {"is_ready", false}
+        });
+
+        bot_build_manager.player1_bot.ClearRobotParts();
+        bot_build_manager.player2_bot.ClearRobotParts();
+
+        // TODO: RESET COMBAT LOG TEXT
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            int random_idx = Random.Range(0, battlefield_manager.battlefield_list.Length - 1);
+            string new_arena = battlefield_manager.battlefield_list[random_idx].map_name;
+            PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable { { "battlefield_name", new_arena } });
+        }
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void LeaveRoom()
+    {
+        PhotonNetwork.LeaveRoom();
     }
 }

@@ -49,23 +49,8 @@ public class BotBuildManager : MonoBehaviourPunCallbacks
 
     public void Start()
     {
-
         ClearButtonTicks();
-        // UpdatePartsInfo(player1_bot);
-        // BuildTestEnemy();
-        // UpdatePartsInfo(player2_bot);
-        // player2_bot.is_built = true;
-        // player2_bot.is_ready = true;
     }
-
-    // void BuildTestEnemy()
-    // {
-    //     player2_bot.equipped_parts["frame"] = player2_bot.frame;
-    //     player2_bot.equipped_parts["head"] = player2_bot.head;
-    //     player2_bot.equipped_parts["r_arm"] = player2_bot.right_arm;
-    //     player2_bot.equipped_parts["l_arm"] = player2_bot.left_arm;
-    //     player2_bot.equipped_parts["locomotion"] = player2_bot.locomotion;
-    // }
 
     public void EquipPart(Robot robot, RobotPart part)
     {
@@ -152,9 +137,6 @@ public class BotBuildManager : MonoBehaviourPunCallbacks
         UpdateButtonTicks(robot);
         UpdateRobotName(robot);
         UpdateRobotData(robot);
-        // UpdateRobotStatsDisplay(robot);
-        // UpdatePartsInfo(robot);
-        // robot.is_built = CheckRobotBuildComplete(robot);
     }
 
     void ClearButtonTicks()
@@ -166,22 +148,6 @@ public class BotBuildManager : MonoBehaviourPunCallbacks
             tick_img.enabled = false;
         }
     }
-
-    // public void UpdateRobotName(Robot robot)
-    // {
-    //     string name_plate_fmt = "• ROBOT\n";
-
-    //     if (PhotonNetwork.IsMasterClient)
-    //     {
-    //         string bot_name = name_plate_fmt + robot.name;
-    //         host_robot_name_plate_text.text = bot_name;
-    //     }
-    //     else
-    //     {
-    //         string bot_name = name_plate_fmt + robot.name;
-    //         client_robot_name_plate_text.text = bot_name;
-    //     }
-    // }
 
     public bool CheckRobotBuildComplete(Robot robot)
     {
@@ -303,27 +269,6 @@ public class BotBuildManager : MonoBehaviourPunCallbacks
         {
             client_player_stats.text = updated_stat_block;
         }
-
-        // if (PhotonNetwork.IsMasterClient)
-        // {
-        //     photon_view.RPC("UpdateHostStatBlock_RPC", RpcTarget.AllBuffered, updated_stat_block);
-        // }
-        // else
-        // {
-        //     photon_view.RPC("UpdateClientStatBlock_RPC", RpcTarget.AllBuffered, updated_stat_block);
-        // }
-    }
-
-    [PunRPC]
-    void UpdateHostStatBlock_RPC(string updated_stats)
-    {
-        host_player_stats.text = updated_stats;
-    }
-
-    [PunRPC]
-    void UpdateClientStatBlock_RPC(string updated_stats)
-    {
-        client_player_stats.text = updated_stats;
     }
 
     void UpdateButtonTicks(Robot robot)

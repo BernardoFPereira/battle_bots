@@ -21,9 +21,6 @@ public class Robot : MonoBehaviour
     public bool is_built = false;
     public bool is_ready = false;
 
-    // int total_integrity = 0;
-    // int current_integrity = 0;
-
     PhotonView photon_view;
 
     void Awake()
@@ -40,11 +37,6 @@ public class Robot : MonoBehaviour
         name = "NOT JOINED";
     }
 
-    // private void Start()
-    // {
-    //     photon_view = GetComponent<PhotonView>();
-    // }
-
     public void InitializeRobot()
     {
         int rnd_idx = Random.Range(0, name_list.Length - 1);
@@ -53,6 +45,23 @@ public class Robot : MonoBehaviour
         Hashtable updated_robot = new Hashtable();
         updated_robot.Add("robot_name", name);
         PhotonNetwork.LocalPlayer.SetCustomProperties(updated_robot);
+    }
+
+    public void ClearRobotParts()
+    {
+        equipped_parts["frame"] = null;
+        equipped_parts["head"] = null;
+        equipped_parts["r_arm"] = null;
+        equipped_parts["l_arm"] = null;
+        equipped_parts["locomotion"] = null;
+
+        frame = null;
+        head = null;
+        right_arm = null;
+        left_arm = null;
+        locomotion = null;
+
+        is_built = false;
     }
 
     void PrintDebugData()
