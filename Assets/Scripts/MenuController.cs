@@ -261,7 +261,11 @@ public class MenuController : MonoBehaviourPunCallbacks
     {
         SaveUsername();
         string room_name = "Room_" + Random.Range(10, 999);
-        PhotonNetwork.CreateRoom(room_name);
+
+        RoomOptions room_options = new RoomOptions();
+        room_options.MaxPlayers = 2;
+
+        PhotonNetwork.CreateRoom(room_name, room_options);
     }
 
     public override void OnCreatedRoom()
