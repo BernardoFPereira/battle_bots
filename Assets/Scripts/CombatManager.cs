@@ -8,15 +8,18 @@ using Photon.Pun;
 public class CombatManager : MonoBehaviour
 {
     [SerializeField]
-    TMP_Text combat_log;
+    public TMP_Text combat_log;
 
     [SerializeField]
     Robot player1_bot, player2_bot;
 
+    [SerializeField]
+    TMP_Text rematch_button;
+
     PhotonView photon_view;
 
     public bool combat_running = false;
-    bool combat_over = false;
+    public bool combat_over = false;
 
     int player1_bot_integrity;
     int player2_bot_integrity;
@@ -183,5 +186,9 @@ public class CombatManager : MonoBehaviour
     {
         combat_log.text += "\n--- COMBAT FINISHED! ---";
         combat_log.text += "\nThe winner is: " + combat_winner;
+
+        combat_running = false;
+        combat_over = true;
+        rematch_button.alpha = 1;
     }
 }

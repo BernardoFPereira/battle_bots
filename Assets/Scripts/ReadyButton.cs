@@ -27,7 +27,7 @@ public class ReadyButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     Image button_highlight;
     TMP_Text button_text;
 
-    PhotonView photon_view;
+    public PhotonView photon_view;
 
     public void Start()
     {
@@ -48,7 +48,6 @@ public class ReadyButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
                 return;
             }
             robot_build_manager.player1_bot.is_ready = !robot_build_manager.player1_bot.is_ready;
-            // button_text.text = robot_build_manager.player1_bot.is_ready ? "*** READY ***" : "READY";
 
             photon_view.RPC("UpdateReadyStatus_RPC", RpcTarget.AllBuffered, robot_build_manager.player1_bot.is_ready);
         }
@@ -59,11 +58,9 @@ public class ReadyButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
                 return;
             }
             robot_build_manager.player2_bot.is_ready = !robot_build_manager.player2_bot.is_ready;
-            // button_text.text = robot_build_manager.player2_bot.is_ready ? "*** READY ***" : "READY";
 
             photon_view.RPC("UpdateReadyStatus_RPC", RpcTarget.AllBuffered, robot_build_manager.player2_bot.is_ready);
         }
-        // button_text.text = "*** READY ***";
     }
 
     [PunRPC]

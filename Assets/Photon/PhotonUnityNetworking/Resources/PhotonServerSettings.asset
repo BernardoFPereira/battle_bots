@@ -53,6 +53,8 @@ MonoBehaviour:
   - ConcludeCombat_RPC
   - BroadcastCombatRound_RPC
   - ExecuteRematchReset_RPC
+  - MarkRematchTick_RPC
+  - ClearRematchTicks_RPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

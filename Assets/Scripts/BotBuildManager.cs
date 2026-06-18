@@ -139,7 +139,7 @@ public class BotBuildManager : MonoBehaviourPunCallbacks
         UpdateRobotData(robot);
     }
 
-    void ClearButtonTicks()
+    public void ClearButtonTicks()
     {
         GameObject[] equip_ticks = GameObject.FindGameObjectsWithTag("EquipTick");
         foreach (GameObject tick in equip_ticks)

@@ -73,7 +73,6 @@ public class MenuController : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         Debug.Log("Conectado ao Master!");
-        // StartCoroutine("ReturnPing", 1f);
         EnterLobby();
     }
 
@@ -149,10 +148,9 @@ public class MenuController : MonoBehaviourPunCallbacks
         }
 
         SetPlayerProperties();
-        PhotonNetwork.AutomaticallySyncScene = true;
     }
 
-    public override void OnJoinRoomFailed(short returnCode, string message)
+    public override void OnJoinRandomFailed(short returnCode, string message)
     {
         Debug.Log("No room available!");
         connect_fail_popup.SetActive(true);
@@ -306,7 +304,6 @@ public class MenuController : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable
         {
-            {"wants_rematch", false},
             {"is_built", false},
             {"is_ready", false}
         });
@@ -314,7 +311,21 @@ public class MenuController : MonoBehaviourPunCallbacks
         bot_build_manager.player1_bot.ClearRobotParts();
         bot_build_manager.player2_bot.ClearRobotParts();
 
-        // TODO: RESET COMBAT LOG TEXT
+        ReadyButton[] ready_buttons = FindObjectsOfType<ReadyButton>();
+        foreach (ReadyButton button in ready_buttons)
+        {
+            button.UpdateReadyStatus_RPC(false);
+        }
+
+        bot_build_manager.ClearButtonTicks();
+
+        combat_manager.combat_log.text = "";
+
+        RematchButton rematch_button = FindObjectOfType<RematchButton>();
+        if (rematch_button != null)
+        {
+            rematch_button.ClearRematchTicks_RPC();
+        }
 
         if (PhotonNetwork.IsMasterClient)
         {

@@ -13,6 +13,9 @@ public class RobotPartButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
     BotBuildManager robot_build_manager;
 
     [SerializeField]
+    CombatManager combat_manager;
+
+    [SerializeField]
     public RobotPart robot_part;
 
     [SerializeField]
@@ -45,6 +48,8 @@ public class RobotPartButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (combat_manager && combat_manager.combat_running) return;
+
         if (!robot_part)
         {
             return;
@@ -52,20 +57,19 @@ public class RobotPartButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
         if (PhotonNetwork.IsMasterClient)
         {
-            // robot_build_manager.photon_view.RPC("EquipPart", RpcTarget.AllBuffered, robot_build_manager.player1_bot, robot_part);
             robot_build_manager.EquipPart(robot_build_manager.player1_bot, robot_part);
         }
         else
         {
-            // robot_build_manager.photon_view.RPC("EquipPart", RpcTarget.AllBuffered, robot_build_manager.player2_bot, robot_part);
             robot_build_manager.EquipPart(robot_build_manager.player2_bot, robot_part);
-            // robot_build_manager.photon_view.RPC("EquipClient", RpcTarget.AllBuffered);
         }
 
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (combat_manager && combat_manager.combat_running) return;
+
         if (!robot_part)
         {
             return;
@@ -74,7 +78,6 @@ public class RobotPartButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
         button_text = GetComponentInChildren<TextMeshProUGUI>();
         button = GetComponentInChildren<Button>();
 
-        // Debug.Log("MOUSE OVER ME!!!!!");
         TMP_Text basic_info_text = basic_info_panel.GetComponentInChildren<TextMeshProUGUI>();
 
         string type_text = "TYPE: " + robot_part.part_type + "\n";
@@ -90,6 +93,8 @@ public class RobotPartButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (combat_manager && combat_manager.combat_running) return;
+
         Image button_image = GetComponentInChildren<Image>();
         button_text = GetComponentInChildren<TextMeshProUGUI>();
 

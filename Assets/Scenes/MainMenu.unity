@@ -1192,6 +1192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robot_build_manager: {fileID: 553825441}
+  combat_manager: {fileID: 1415220893}
   robot_part: {fileID: 11400000, guid: 15f01ef94c4d1cb4aad837ada8d178ef, type: 2}
   basic_info_panel: {fileID: 551649651}
   detail_info_panel: {fileID: 1315218119}
@@ -1332,6 +1333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robot_build_manager: {fileID: 553825441}
+  combat_manager: {fileID: 1415220893}
   robot_part: {fileID: 11400000, guid: 3241fb81496251e4fa718a6d7008fdbf, type: 2}
   basic_info_panel: {fileID: 551649651}
   detail_info_panel: {fileID: 1315218119}
@@ -1810,6 +1812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robot_build_manager: {fileID: 0}
+  combat_manager: {fileID: 0}
   robot_part: {fileID: 0}
   basic_info_panel: {fileID: 551649651}
   detail_info_panel: {fileID: 1315218119}
@@ -2025,6 +2028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robot_build_manager: {fileID: 553825441}
+  combat_manager: {fileID: 1415220893}
   robot_part: {fileID: 11400000, guid: 9705f05dbed1f774ca74aaee5547af2c, type: 2}
   basic_info_panel: {fileID: 516147472}
   detail_info_panel: {fileID: 1315218119}
@@ -2776,6 +2780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robot_build_manager: {fileID: 553825441}
+  combat_manager: {fileID: 1415220893}
   robot_part: {fileID: 11400000, guid: 9983b072c6e93434995edbed287c8053, type: 2}
   basic_info_panel: {fileID: 551649651}
   detail_info_panel: {fileID: 1315218119}
@@ -3126,6 +3131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robot_build_manager: {fileID: 0}
+  combat_manager: {fileID: 0}
   robot_part: {fileID: 0}
   basic_info_panel: {fileID: 516147472}
   detail_info_panel: {fileID: 1315218119}
@@ -3266,6 +3272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robot_build_manager: {fileID: 553825441}
+  combat_manager: {fileID: 1415220893}
   robot_part: {fileID: 11400000, guid: 71db68af9a15bda4c8cc537ce9fb934f, type: 2}
   basic_info_panel: {fileID: 551649651}
   detail_info_panel: {fileID: 1315218119}
@@ -3614,6 +3621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robot_build_manager: {fileID: 553825441}
+  combat_manager: {fileID: 1415220893}
   robot_part: {fileID: 11400000, guid: f02001720339b104e89645f3571d0691, type: 2}
   basic_info_panel: {fileID: 551649651}
   detail_info_panel: {fileID: 1315218119}
@@ -3853,7 +3861,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &368975238
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4814,6 +4822,7 @@ MonoBehaviour:
   combat_manager: {fileID: 1415220893}
   is_master_button: 1
   is_client_button: 0
+  photon_view: {fileID: 0}
 --- !u!114 &416997999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4945,6 +4954,8 @@ GameObject:
   - component: {fileID: 418888269}
   - component: {fileID: 418888268}
   - component: {fileID: 418888267}
+  - component: {fileID: 418888271}
+  - component: {fileID: 418888270}
   m_Layer: 5
   m_Name: RematchButton
   m_TagString: Untagged
@@ -4964,6 +4975,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1933703030}
   - {fileID: 1992607984}
   - {fileID: 1095963441}
   - {fileID: 241355627}
@@ -5056,6 +5068,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 418888265}
   m_CullTransparentMesh: 1
+--- !u!114 &418888270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418888265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 8
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &418888271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418888265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbf182e4610d305469489e72c964fa25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combat_manager: {fileID: 1415220893}
+  menu_controller: {fileID: 1408857887}
+  host_rematch_tick: {fileID: 241355626}
+  client_rematch_tick: {fileID: 1095963440}
+  highlight_block: {fileID: 1933703029}
+  highlight_color: {r: 0, g: 0.83921576, b: 0.4156863, a: 1}
+  button_text: {fileID: 1992607985}
 --- !u!1 &419982691
 GameObject:
   m_ObjectHideFlags: 0
@@ -6103,6 +6156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robot_build_manager: {fileID: 0}
+  combat_manager: {fileID: 0}
   robot_part: {fileID: 0}
   basic_info_panel: {fileID: 551649651}
   detail_info_panel: {fileID: 1315218119}
@@ -6588,6 +6642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robot_build_manager: {fileID: 553825441}
+  combat_manager: {fileID: 1415220893}
   robot_part: {fileID: 11400000, guid: ebc9e275fda093f49bd90ba3f2d79f12, type: 2}
   basic_info_panel: {fileID: 551649651}
   detail_info_panel: {fileID: 1315218119}
@@ -6983,6 +7038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robot_build_manager: {fileID: 553825441}
+  combat_manager: {fileID: 1415220893}
   robot_part: {fileID: 11400000, guid: 335f7c0fac9110f4b989afe7a39f76eb, type: 2}
   basic_info_panel: {fileID: 551649651}
   detail_info_panel: {fileID: 1315218119}
@@ -8698,6 +8754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robot_build_manager: {fileID: 0}
+  combat_manager: {fileID: 0}
   robot_part: {fileID: 0}
   basic_info_panel: {fileID: 516147472}
   detail_info_panel: {fileID: 1315218119}
@@ -9087,6 +9144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robot_build_manager: {fileID: 553825441}
+  combat_manager: {fileID: 1415220893}
   robot_part: {fileID: 11400000, guid: 8b8a421d0fd13e34ebeb33a9c451192c, type: 2}
   basic_info_panel: {fileID: 551649651}
   detail_info_panel: {fileID: 1315218119}
@@ -9437,6 +9495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robot_build_manager: {fileID: 553825441}
+  combat_manager: {fileID: 1415220893}
   robot_part: {fileID: 11400000, guid: 4ed80ebd4a8aac1438ba30e6df6bbaca, type: 2}
   basic_info_panel: {fileID: 551649651}
   detail_info_panel: {fileID: 1315218119}
@@ -9991,6 +10050,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robot_build_manager: {fileID: 553825441}
+  combat_manager: {fileID: 1415220893}
   robot_part: {fileID: 11400000, guid: 18fc1b1dca8bd1f4088bc51f146cebb5, type: 2}
   basic_info_panel: {fileID: 551649651}
   detail_info_panel: {fileID: 1315218119}
@@ -10440,6 +10500,7 @@ MonoBehaviour:
   combat_manager: {fileID: 1415220893}
   is_master_button: 0
   is_client_button: 1
+  photon_view: {fileID: 0}
 --- !u!114 &864866960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10573,7 +10634,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -13.390005, y: -197.37001}
+  m_AnchoredPosition: {x: -13.390005, y: -135.1}
   m_SizeDelta: {x: 215.61, y: 43.61}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &867177034
@@ -10652,7 +10713,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 310e06df74e513c4989cb93f94301bc2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 23e6bba9f5fc73149a2eb0ed00b34072, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12070,6 +12131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robot_build_manager: {fileID: 553825441}
+  combat_manager: {fileID: 1415220893}
   robot_part: {fileID: 11400000, guid: ae783b3ca1351a94f8216512df8eec21, type: 2}
   basic_info_panel: {fileID: 516147472}
   detail_info_panel: {fileID: 1315218119}
@@ -12893,7 +12955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.49769592, a: 0.03529412}
+  m_Color: {r: 0, g: 1, b: 0.49769592, a: 0.039215688}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -13919,7 +13981,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1195752914
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14166,6 +14228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robot_build_manager: {fileID: 0}
+  combat_manager: {fileID: 0}
   robot_part: {fileID: 0}
   basic_info_panel: {fileID: 551649651}
   detail_info_panel: {fileID: 1315218119}
@@ -14687,6 +14750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robot_build_manager: {fileID: 553825441}
+  combat_manager: {fileID: 1415220893}
   robot_part: {fileID: 11400000, guid: e1a2f37ddc87df44293512f3f1a13298, type: 2}
   basic_info_panel: {fileID: 516147472}
   detail_info_panel: {fileID: 1315218119}
@@ -15836,6 +15900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robot_build_manager: {fileID: 553825441}
+  combat_manager: {fileID: 1415220893}
   robot_part: {fileID: 11400000, guid: dac4d230182929e4d8b05ad5f947c215, type: 2}
   basic_info_panel: {fileID: 551649651}
   detail_info_panel: {fileID: 1315218119}
@@ -16186,6 +16251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robot_build_manager: {fileID: 0}
+  combat_manager: {fileID: 0}
   robot_part: {fileID: 0}
   basic_info_panel: {fileID: 551649651}
   detail_info_panel: {fileID: 1315218119}
@@ -17043,6 +17109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1408857888}
   - component: {fileID: 1408857887}
+  - component: {fileID: 1408857889}
   m_Layer: 0
   m_Name: MenuController
   m_TagString: Untagged
@@ -17064,14 +17131,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bot_build_manager: {fileID: 553825441}
   battlefield_manager: {fileID: 1071585153}
-  combat_manager: {fileID: 0}
+  combat_manager: {fileID: 1415220893}
   lobby: {fileID: 979861629}
   engagement: {fileID: 1059663472}
   room: {fileID: 36912768}
   inputName: {fileID: 1613618712}
   host_username_display: {fileID: 1460005872}
   client_username_display: {fileID: 294248497}
-  connect_fail_popup: {fileID: 0}
+  connect_fail_popup: {fileID: 2026539044}
 --- !u!4 &1408857888
 Transform:
   m_ObjectHideFlags: 0
@@ -17087,6 +17154,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1408857889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408857886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 9
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1415220891
 GameObject:
   m_ObjectHideFlags: 0
@@ -17139,7 +17228,9 @@ MonoBehaviour:
   combat_log: {fileID: 378193200}
   player1_bot: {fileID: 632515233}
   player2_bot: {fileID: 1971393617}
+  rematch_button: {fileID: 1992607985}
   combat_running: 0
+  combat_over: 0
 --- !u!114 &1415220894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17291,6 +17382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robot_build_manager: {fileID: 553825441}
+  combat_manager: {fileID: 1415220893}
   robot_part: {fileID: 11400000, guid: 2611e64be4c9fbd419c27fc66acd9ae9, type: 2}
   basic_info_panel: {fileID: 551649651}
   detail_info_panel: {fileID: 1315218119}
@@ -19153,8 +19245,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -161.2, y: -29.27}
-  m_SizeDelta: {x: 30.78, y: 72.1}
+  m_AnchoredPosition: {x: -161.2, y: -18.62}
+  m_SizeDelta: {x: 30.78, y: 50.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1665440677
 MonoBehaviour:
@@ -21615,6 +21707,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930018316}
   m_CullTransparentMesh: 1
+--- !u!1 &1933703029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1933703030}
+  - component: {fileID: 1933703032}
+  - component: {fileID: 1933703031}
+  m_Layer: 5
+  m_Name: HighlightBlock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1933703030
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933703029}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 418888266}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.000024796, y: 0.000014305}
+  m_SizeDelta: {x: 215.9, y: 42.74}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1933703031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933703029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0.85098046, b: 0.42352945, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1933703032
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933703029}
+  m_CullTransparentMesh: 1
 --- !u!1 &1950185818
 GameObject:
   m_ObjectHideFlags: 0
@@ -22042,8 +22209,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4285323520
-  m_fontColor: {r: 0, g: 0.85098046, b: 0.42352945, a: 1}
+    rgba: 460118272
+  m_fontColor: {r: 0, g: 0.85098046, b: 0.42352945, a: 0.105882354}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -22636,6 +22803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robot_build_manager: {fileID: 553825441}
+  combat_manager: {fileID: 1415220893}
   robot_part: {fileID: 11400000, guid: f77307df6214ce04cb25837502d2aed5, type: 2}
   basic_info_panel: {fileID: 551649651}
   detail_info_panel: {fileID: 1315218119}
